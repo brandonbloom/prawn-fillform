@@ -350,7 +350,8 @@ module Prawn
                 :height => height,
                 :valign => options[:valign] || :center,
                 :size => size,
-                :style => style
+                :style => style,
+                :overflow => :strink_to_fit
             end
           elsif field.type == :checkbox
             is_yes = (v = value.downcase) == "yes" || v == "1" || v == "true"
