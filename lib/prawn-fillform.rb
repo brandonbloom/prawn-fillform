@@ -366,21 +366,20 @@ module Prawn
               end
             end
           elsif field.type == :button
-            bounding_box([x_position, y_position], :width => width, :height => height) do
-              image_options = {
-                :position => options[:position] || :center,
-                :vposition => options[:vposition] || :center,
-              }
-              if options[:fill]
-                image_options[:fit] = [width, height]
-              else
-                image_options[:height] = height
-              end
-              if value =~ /http/
-                image open(value), image_options
-              else
-                image value, image_options
-              end
+            image_options = {
+              :position => options[:position] || :center,
+              :vposition => options[:vposition] || :center,
+              :at => [x_position, y_position]
+            }
+            if options[:fill]
+              image_options[:fit] = [width, height]
+            else
+              image_options[:height] = height
+            end
+            if value =~ /http/
+              image open(value), image_options
+            else
+              image value, image_options
             end
           end
         end
