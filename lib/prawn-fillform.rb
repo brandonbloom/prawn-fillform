@@ -146,7 +146,7 @@ module Prawn
       def embedded_fonts
         ap = get_dict_item(:AP)
         return nil if ap.nil?
-        deref(deref(ap[:N])[:Resources][:Font])
+        deref(deref(deref(ap)[:N])[:Resources][:Font])
       end
 
       def type
